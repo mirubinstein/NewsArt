@@ -2,7 +2,6 @@ from openai import OpenAI
 from gnews import GNews
 from instagrapi import Client
 import random
-import os
 import base64
 
 print("Fetching top news article...\n")
