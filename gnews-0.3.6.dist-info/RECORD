@@ -1,0 +1,17 @@
+gnews-0.3.6.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+gnews-0.3.6.dist-info/LICENSE.txt,sha256=pAZXnNE2dxxwXFIduGyn1gpvPefJtUYOYZOi3yeGG94,1068
+gnews-0.3.6.dist-info/METADATA,sha256=_DTAPiOMWWuf_ppVoHXLS6vPOhID79s1SN7SrXZMcdE,17489
+gnews-0.3.6.dist-info/RECORD,,
+gnews-0.3.6.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gnews-0.3.6.dist-info/WHEEL,sha256=Xo9-1PvkuimrydujYJAjF7pCkriuXBpUPEjma1nZyJ0,92
+gnews-0.3.6.dist-info/top_level.txt,sha256=i5APuMSWS2tWPqz36M93Bh--NPTf7upTW3U_Yice_jw,6
+gnews/__init__.py,sha256=S8XVdRV9Ce4VyhmtTSjD2Glp7x3O1ywAICtnl3T_Qvs,61
+gnews/__pycache__/__init__.cpython-312.pyc,,
+gnews/__pycache__/gnews.cpython-312.pyc,,
+gnews/gnews.py,sha256=ZZW35FROGPV-VSFF1MVhS25YCzBmulmkGmNAgqWN71k,13199
+gnews/utils/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+gnews/utils/__pycache__/__init__.cpython-312.pyc,,
+gnews/utils/__pycache__/constants.cpython-312.pyc,,
+gnews/utils/__pycache__/utils.cpython-312.pyc,,
+gnews/utils/constants.py,sha256=CQz39tXwUXfkaVL0Yv6tdwptTT0zn81yUyjJ89wCOAE,24441
+gnews/utils/utils.py,sha256=1DK89TEavFDLvHKUhQcQtTfCsDGP7Mswn4-RtSbHHsA,2040
