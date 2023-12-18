@@ -5,7 +5,7 @@ import random
 import base64
 
 print("Fetching top news article...\n")
-google_news = GNews(language='en', country='US',period='1d', max_results=10)
+google_news = GNews(language='en', period='1d', max_results=10)
 google_news.exclude_websites = ['reuters.com']
 top_news = google_news.get_top_news()
 
@@ -47,17 +47,18 @@ revised_prompt = picture_response.data[0].revised_prompt
 text_prompt = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
-    {"role": "system", "content": "You run an Instagram account for news inspired artwork."},
-    {"role": "user", "content": """Provide a short and engaging Instagram post caption for 
+    {"role": "system", "content": """You run an Instagram account for news inspired artwork, 
+     are an expert on social media marketing, and in your late twenties with a college degree."""},
+    {"role": "user", "content": """Provide a short, but engaging Instagram post caption for 
      artwork created by the following prompt about a current event. Be sure to include hashtags, 
-     include the art style used, and reference the news event itself. Do not mention the artists
-     name in the caption.\n"""+revised_prompt}
+     include the art style used, include emojis, and reference the news event itself. Do not mention the artist
+     name in the caption or reference any other Instagram account. Do not wrap the caption in 
+     quotation marks or proceed it with 'Caption:'.\n"""+revised_prompt}
   ]
 )
 
 post_caption = text_prompt.choices[0].message.content
-post_caption = post_caption[1:-1]
-post_caption += "\n\nInspired by latest top world news: " + article_title
+post_caption += "\n\nInspired by latest top news: " + article_title
 print (post_caption +"\n")
 
 #Post on Insta
