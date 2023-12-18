@@ -1,9 +1,19 @@
 from openai import OpenAI
 from gnews import GNews
 from instagrapi import Client
+from dotenv import load_dotenv
+
 import random
 import base64
 import os
+
+load_dotenv()
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+INSTA_USER = os.environ.get("INSTA_USER")
+INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
+#print(OPENAI_API_KEY)
+#print(INSTA_USER)
+#print(INSTA_PASSWORD)
 
 print("Fetching top news article...\n")
 google_news = GNews(language='en', period='1d', max_results=10)
@@ -19,7 +29,9 @@ article_prompt = article.title + "/n" + article.text
 article_prompt = article_prompt[:3750]
 
 #Build Content
-client=OpenAI(api_key="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")
+
+#client=OpenAI(api_key="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")
+client=OpenAI(api_key=OPENAI_API_KEY)
 
 
 print("Preparing Insta post for: " + article_title + "...\n")
@@ -65,7 +77,7 @@ print (post_caption +"\n")
 
 #Post on Insta
 cl = Client()
-cl.login("NewsByArt", "n3w5@rt")
+cl.login(INSTA_USER, INSTA_PASSWORD)
 
 media = cl.photo_upload(path=image_filename, caption=post_caption)
 
