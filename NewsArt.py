@@ -11,10 +11,8 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INSTA_USER = os.environ.get("INSTA_USER")
 INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
-#print(OPENAI_API_KEY)
-#print(INSTA_USER)
-#print(INSTA_PASSWORD)
 
+#Get The Article
 print("Fetching top news article...\n")
 google_news = GNews(language='en', period='1d', max_results=10)
 google_news.exclude_websites = ['reuters.com']
@@ -28,7 +26,7 @@ article_text = article.text
 article_prompt = article.title + "/n" + article.text
 article_prompt = article_prompt[:3750]
 
-#Build Content
+#Create Image Based on Article
 client=OpenAI(api_key=OPENAI_API_KEY)
 
 print("Preparing Insta post for: " + article_title + "...\n")
@@ -55,6 +53,7 @@ with open(image_filename, "wb") as fh:
 
 revised_prompt = picture_response.data[0].revised_prompt
 
+#Create Caption for Post
 text_prompt = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
@@ -75,7 +74,7 @@ print (post_caption +"\n")
 #Post on Insta
 cl = Client()
 cl.login(INSTA_USER, INSTA_PASSWORD)
-
 media = cl.photo_upload(path=image_filename, caption=post_caption)
 
+#Clean Up Image File
 os.remove(image_filename)
