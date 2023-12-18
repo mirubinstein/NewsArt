@@ -3,6 +3,7 @@ from gnews import GNews
 from instagrapi import Client
 import random
 import base64
+import os
 
 print("Fetching top news article...\n")
 google_news = GNews(language='en', period='1d', max_results=10)
@@ -15,7 +16,7 @@ article = google_news.get_full_article(chosen_news['url'])
 article_title = article.title
 article_text = article.text
 article_prompt = article.title + "/n" + article.text
-article_prompt = article_prompt[:3900]
+article_prompt = article_prompt[:3750]
 
 #Build Content
 client=OpenAI(api_key="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")
@@ -23,7 +24,8 @@ client=OpenAI(api_key="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")
 
 print("Preparing Insta post for: " + article_title + "...\n")
 
-art_prompt = "Create an artistic rendition of the following news article in an art style chosen at random.\n"
+art_prompt = """Create an artistic rendition of the following news article in an art 
+style chosen at random. Update this prompt if needed to make it pass safety systems.\n"""
 art_prompt += article_prompt
 
 picture_response = client.images.generate(
@@ -66,3 +68,5 @@ cl = Client()
 cl.login("NewsByArt", "n3w5@rt")
 
 media = cl.photo_upload(path=image_filename, caption=post_caption)
+
+os.remove(image_filename)
