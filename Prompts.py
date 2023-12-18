@@ -1,6 +1,6 @@
 #Prompt to create image. Article title, description, and text (truncated to 3750 characters) is appended to this prompt.
-art_prompt = """Create an artistic rendition of the following news article in an art 
-style chosen at random. Update this prompt if needed to make it pass safety systems.\n"""
+art_prompt = """Create a painting for the following news article in any art style. If the article is inappropriate, 
+make it appropriate enough for Dall-E. Use as much of the following detail as possible. Don’t use text.\n"""
 
 #System prompt before creating post caption.
 caption_system = """You run an Instagram account for news inspired artwork, 

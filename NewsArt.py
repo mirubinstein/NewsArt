@@ -8,6 +8,7 @@ import base64
 import os
 import Prompts
 
+#OpenAI API Key and Insta creds need to be stored in .env file
 load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INSTA_USER = os.environ.get("INSTA_USER")
