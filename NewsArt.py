@@ -29,10 +29,7 @@ article_prompt = article.title + "/n" + article.text
 article_prompt = article_prompt[:3750]
 
 #Build Content
-
-#client=OpenAI(api_key="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")
 client=OpenAI(api_key=OPENAI_API_KEY)
-
 
 print("Preparing Insta post for: " + article_title + "...\n")
 
