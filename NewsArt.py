@@ -23,8 +23,9 @@ chosen_news = random.choice(top_news)
 
 article = google_news.get_full_article(chosen_news['url'])
 article_title = article.title
+article_desc = chosen_news['description']
 article_text = article.text
-article_prompt = article.title + "/n" + article.text
+article_prompt = article.title + "/n" + article_desc + "/n" + article.text
 article_prompt = article_prompt[:3750]
 
 #Create Image Based on Article
