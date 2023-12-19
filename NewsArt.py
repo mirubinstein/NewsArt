@@ -17,7 +17,7 @@ INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
 #Get The Article
 print("Fetching top news article...\n")
 google_news = GNews(language='en', period='1d', max_results=10)
-google_news.exclude_websites = ['reuters.com']
+google_news.exclude_websites = ['reuters.com','thehill.com']
 top_news = google_news.get_top_news()
 
 chosen_news = random.choice(top_news)
