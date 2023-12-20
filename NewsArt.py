@@ -7,6 +7,7 @@ import random
 import base64
 import os
 import Prompts
+import tempfile
 
 def makeNewsArt():
   #OpenAI API Key and Insta creds need to be stored in .env file
@@ -49,7 +50,7 @@ def makeNewsArt():
 
 
   image_b64 = picture_response.data[0].b64_json
-  image_filename = "instapost.jpg"
+  image_filename = os.path.join(tempfile.gettempdir(),"instapost.jpg")
 
   with open(image_filename, "wb") as fh:
       fh.write(base64.b64decode(image_b64))
