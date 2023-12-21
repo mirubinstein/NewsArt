@@ -21,14 +21,14 @@ OpenAI_Client = OpenAI(api_key=OPENAI_API_KEY)
 def getNewsArticle():
   logging.info("Fetching top news article...\n")
   google_news = GNews(language='en', period='1d', max_results=10)
-  google_news.exclude_websites = ['reuters.com','thehill.com']
+  google_news.exclude_websites = ['reuters.com','thehill.com','ft.com']
   top_news = google_news.get_top_news()
 
   chosen_news = random.choice(top_news)
 
   article = google_news.get_full_article(chosen_news['url'])
 
-  logging.info("Article chosen: " + article.title + "\n")
+  logging.info("Article chosen: " + article.title + "\n" + article.url)
 
   return article
 
@@ -40,7 +40,7 @@ def createPostImagePrompt(article):
     messages=[
       {"role": "system", "content": """You are an assistant whose role is to read news articles and 
        provide rich details about that article so that a painter can create an artistic representation 
-       of it"""},
+       of it."""},
       {"role": "user", "content": """Summarize the following news article.\n\n"""+article.title + "\n" + article.text}
     ]
   )
