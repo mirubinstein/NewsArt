@@ -66,8 +66,9 @@ def makeNewsArt():
     ]
   )
 
-  post_caption = text_prompt.choices[0].message.content
-  post_caption += "\n\nInspired by latest top news: " + article_title
+  post_caption = "\U0001f5BC  Inspired by latest top news: " + article_title + "\n\n"
+  post_caption += text_prompt.choices[0].message.content
+
   print (post_caption.encode("utf-8"))
 
   #Post on Insta
