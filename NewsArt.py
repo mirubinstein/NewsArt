@@ -97,10 +97,10 @@ def makeNewsArt():
   #Get News Article
   article = getNewsArticle()
 
-  #Get ChatGPT Summary of Article
+  #Get Summary of Article
   article_summary = createPostImagePrompt(article)
 
-  #Get Dalle Image Based on Summary
+  #Get Image Based on Summary
   picture_response = createPostImage(article_summary)
 
   #Save Image to TMP
