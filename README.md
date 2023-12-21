@@ -3,7 +3,7 @@ This Python program does the following:
   2. Chooses an article at random
   3. Creates a summary of that article via ChatGPT 3.5 turbo
   4. Creates an artistic representation of the article based on the summary via Dall-E
-  5. Creates a caption for the art piece
+  5. Creates a caption for the art piece via ChatGPT 3.5 turbo
   6. Posts the image and caption to Instagram
 
 This is executed every 6 hours via an Azure Function.
