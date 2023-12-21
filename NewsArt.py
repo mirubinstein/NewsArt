@@ -88,6 +88,16 @@ def createPostCaption(revised_prompt, article):
 
   return post_caption
 
+def saveImage(b64_json):
+  image_filename = os.path.join(tempfile.gettempdir(),"newsart-" + str(uuid.uuid4().hex) + ".jpg")
+
+  with open(image_filename, "wb") as fh:
+    fh.write(base64.b64decode(b64_json))
+    logging.info("Image saved: " + image_filename)
+
+  return image_filename
+
+
 def postToInsta(image_filename, post_caption):
   logging.info("Posting to Instagram...")
   cl = Client()
@@ -106,10 +116,7 @@ def makeNewsArt():
   picture_response = createPostImage(article_summary)
 
   #Save Image to TMP
-  image_filename = os.path.join(tempfile.gettempdir(),"newsart-" + str(uuid.uuid4().hex) + ".jpg")
-  with open(image_filename, "wb") as fh:
-    fh.write(base64.b64decode(picture_response.b64_json))
-    logging.info("Image saved: " + image_filename)
+  image_filename = saveImage(picture_response.b64_json)
 
   #Get Caption for Post
   post_caption = createPostCaption(picture_response.revised_prompt, article)
