@@ -15,6 +15,7 @@ load_dotenv()
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 INSTA_USER = os.environ.get("INSTA_USER")
 INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
+
 OpenAI_Client = OpenAI(api_key=OPENAI_API_KEY)
 
 def getNewsArticle():
@@ -49,7 +50,6 @@ def createPostImagePrompt(article):
 def createPostImage(article_summary):
   logging.info("Preparing Insta image...\n")
 
-
   art_prompt = """Create a painting in any style based on the following news article summary. If the article is inappropriate, 
   make it appropriate enough for Dall-E. Use as much of the following detail as possible. Don’t use text.\n"""
   art_prompt += article_summary
@@ -66,7 +66,8 @@ def createPostImage(article_summary):
   return picture_response.data[0]
 
 def createPostCaption(revised_prompt, article):
-  logging.info("Preparing Insta caption for: " + article.title + "...\n")
+  logging.info("Preparing Insta caption...\n")
+
   text_prompt = OpenAI_Client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
@@ -90,24 +91,28 @@ def postToInsta(image_filename, post_caption):
   cl = Client()
   cl.login(INSTA_USER, INSTA_PASSWORD)
   media = cl.photo_upload(path=image_filename, caption=post_caption)
-
   logging.info("Instagram post completed!")
 
 def makeNewsArt():
+  #Get News Article
   article = getNewsArticle()
 
+  #Get ChatGPT Summary of Article
   article_summary = createPostImagePrompt(article)
 
+  #Get Dalle Image Based on Summary
   picture_response = createPostImage(article_summary)
 
+  #Save Image to TMP
   image_filename = os.path.join(tempfile.gettempdir(),"newsart-" + str(uuid.uuid4().hex) + ".jpg")
-
   with open(image_filename, "wb") as fh:
     fh.write(base64.b64decode(picture_response.b64_json))
     logging.info("Image saved: " + image_filename)
 
+  #Get Caption for Post
   post_caption = createPostCaption(picture_response.revised_prompt, article)
 
+  #Post to Instagram
   postToInsta(image_filename, post_caption)
 
 if __name__ == '__main__': 
