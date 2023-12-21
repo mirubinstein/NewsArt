@@ -19,7 +19,7 @@ INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
 OpenAI_Client = OpenAI(api_key=OPENAI_API_KEY)
 
 def getNewsArticle():
-  logging.info("Fetching top news article...\n")
+  logging.info("Fetching top news article...")
   google_news = GNews(language='en', period='1d', max_results=10)
   google_news.exclude_websites = ['reuters.com','thehill.com','ft.com']
   top_news = google_news.get_top_news()
@@ -33,7 +33,7 @@ def getNewsArticle():
   return article
 
 def createPostImagePrompt(article):
-  logging.info("Preparing Insta image prompt...\n")
+  logging.info("Preparing Insta image prompt...")
 
   text_prompt = OpenAI_Client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -41,14 +41,15 @@ def createPostImagePrompt(article):
       {"role": "system", "content": """You are an assistant whose role is to read news articles and 
        provide rich details about that article so that a painter can create an artistic representation 
        of it."""},
-      {"role": "user", "content": """Summarize the following news article.\n\n"""+article.title + "\n" + article.text}
+      {"role": "user", "content": """Summarize the following news article with as much detail as possible.
+       \n\n"""+article.title + "\n" + article.text}
     ]
   )
 
   return text_prompt.choices[0].message.content
 
 def createPostImage(article_summary):
-  logging.info("Preparing Insta image...\n")
+  logging.info("Preparing Insta image...")
 
   art_prompt = """Create a painting in any style based on the following news article summary. If the article is inappropriate, 
   make it appropriate enough for Dall-E. Use as much of the following detail as possible. Don’t include text in the image.\n"""
@@ -66,7 +67,7 @@ def createPostImage(article_summary):
   return picture_response.data[0]
 
 def createPostCaption(revised_prompt, article):
-  logging.info("Preparing Insta caption...\n")
+  logging.info("Preparing Insta caption...")
 
   text_prompt = OpenAI_Client.chat.completions.create(
     model="gpt-3.5-turbo",
