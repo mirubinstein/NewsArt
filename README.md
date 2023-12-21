@@ -6,6 +6,8 @@ This Python program does the following:
   5. Creates a caption for the art piece
   6. Posts the image and caption to Instagram
 
+This is executed every 6 hours via an Azure Function.
+
 Requires a .env file to be created at the root directory with the following:
 ```
 OPENAI_API_KEY=<Your OpenAI Key>
