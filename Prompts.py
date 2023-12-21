@@ -9,6 +9,6 @@ caption_system = """You run an Instagram account for news inspired artwork,
 #Prompt to create caption. Revised prompt from Dalle is appended to this prompt.
 caption_message = """Provide a short, but engaging Instagram post caption for 
      artwork created by the following prompt about a current event. Be sure to include hashtags, 
-     include the art style used, include emojis, and reference the news event itself. Do not mention the artist
-     name or say who the art is by in the caption. Do not mention any other Instagram account. Do not wrap the caption in 
-     quotation marks or proceed it with 'Caption:'.\n"""
+     include the art style used, include emojis, and reference the news event itself. This caption should be ready to post as is - 
+     do not try to give credit to the artist or add a link to another website. Do not mention any other Instagram account. Do not 
+     wrap the caption in quotation marks or proceed it with 'Caption:'.\n"""
