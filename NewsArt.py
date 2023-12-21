@@ -51,7 +51,7 @@ def createPostImage(article_summary):
   logging.info("Preparing Insta image...\n")
 
   art_prompt = """Create a painting in any style based on the following news article summary. If the article is inappropriate, 
-  make it appropriate enough for Dall-E. Use as much of the following detail as possible. Don’t use text.\n"""
+  make it appropriate enough for Dall-E. Use as much of the following detail as possible. Don’t include text in the image.\n"""
   art_prompt += article_summary
 
   picture_response = OpenAI_Client.images.generate(
@@ -76,8 +76,9 @@ def createPostCaption(revised_prompt, article):
       {"role": "user", "content": """Provide a short, but engaging Instagram post caption for 
      artwork created by the following prompt about a current event. Be sure to include hashtags, 
      include the art style used, and include emojis. This caption should be ready to post as is - 
-     do not try to give credit to the artist or add a link to another website. Do not mention any other Instagram account. Do not 
-     wrap the caption in quotation marks or proceed it with 'Caption:'. Keep it under 500 characters.\n"""+revised_prompt}
+     do not try to give credit to the artist or add a link to another website. Do not mention any 
+     other Instagram account. Do not wrap the caption in quotation marks or proceed it with 
+     'Caption:'. Keep it under 500 characters.\n"""+revised_prompt}
     ]
   )
 
