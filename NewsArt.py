@@ -8,6 +8,7 @@ import base64
 import os
 import Prompts
 import tempfile
+import logging
 
 def makeNewsArt():
   #OpenAI API Key and Insta creds need to be stored in .env file
@@ -17,7 +18,7 @@ def makeNewsArt():
   INSTA_PASSWORD = os.environ.get("INSTA_PASSWORD")
 
   #Get The Article
-  print("Fetching top news article...\n")
+  logging.info("Fetching top news article...\n")
   google_news = GNews(language='en', period='1d', max_results=10)
   google_news.exclude_websites = ['reuters.com','thehill.com']
   top_news = google_news.get_top_news()
@@ -34,7 +35,7 @@ def makeNewsArt():
   #Create Image Based on Article
   client=OpenAI(api_key=OPENAI_API_KEY)
 
-  print("Preparing Insta post for: " + article_title + "...\n")
+  logging.info("Preparing Insta post for: " + article_title + "...\n")
 
   art_prompt = Prompts.art_prompt
   art_prompt += article_prompt
@@ -69,7 +70,7 @@ def makeNewsArt():
   post_caption = "\U0001f5BC  Inspired by latest top news: " + article_title + "\n\n"
   post_caption += text_prompt.choices[0].message.content
 
-  print (post_caption.encode("utf-8"))
+  logging.info (post_caption.encode("utf-8"))
 
   #Post on Insta
   cl = Client()
@@ -78,6 +79,8 @@ def makeNewsArt():
 
   #Clean Up Image File
   os.remove(image_filename)
+
+  logging.info("Instagram post completed!")
 
 if __name__ == '__main__': 
   makeNewsArt() 
