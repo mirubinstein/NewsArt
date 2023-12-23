@@ -8,7 +8,7 @@ This Python program does the following:
 
 This is executed 3 times per day (6am, 12pm, and 6pm PST) via an Azure Function, but can also be run manually via NewsArt.py.
 
-Requires a .env file to be created at the root directory with the following:
+Requires the following environment variables set or a .env file to be created at the root directory with the following:
 ```
 OPENAI_API_KEY=<Your OpenAI Key>
 INSTA_USER=<Your Instagram Username>
