@@ -142,6 +142,7 @@ def postToInsta(image_filename, post_caption):
   logging.info("Instagram post completed!")
 
 def makeNewsArt():
+  logging.info("Making News Art")
   #Get News Article
   article = getNewsArticle()
 
