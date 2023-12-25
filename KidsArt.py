@@ -43,6 +43,7 @@ def createPostImagePrompt(testPrompt=False):
   return text_prompt.choices[0].message.content
 
 def createPostImage(picture_prompt, testPrompt=False):
+  logging.info("Preparing Insta image...")
   picture_response = OpenAI_Client.images.generate(
     model="dall-e-3",
     prompt=picture_prompt,
