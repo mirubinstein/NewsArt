@@ -107,7 +107,7 @@ def createPostCaption(revised_prompt, article, testPrompt=False):
       {"role": "system", "content": """You run an Instagram account for news inspired artwork, 
      are an expert on social media marketing, and in your late twenties with a college degree."""},
       {"role": "user", "content": """Provide a short, but engaging Instagram post caption for 
-     artwork created by the following prompt about a current event. Be sure to include hashtags, 
+     artwork created by the following prompt about a current event. Be sure to include hashtags (including #news), 
      include the art style used, and include emojis. This caption should be ready to post as is - 
      do not try to give credit to the artist or add a link to another website. Do not mention any 
      other Instagram account. Do not wrap the caption in quotation marks or proceed it with 
