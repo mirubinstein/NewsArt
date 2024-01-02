@@ -37,7 +37,7 @@ def createPostImage(meal, testPrompt=False):
   logging.info("Preparing Insta image...")
   picture_response = OpenAI_Client.images.generate(
     model="dall-e-3",
-    prompt="Show any delicious " + meal + " meal from a random nationality as a high resolution, highyl realistic, highly detailed photograph with a Sony a7R III.",
+    prompt="Show any delicious " + meal + " meal from a random nationality as a high resolution, highly realistic, highly detailed photograph with a Sony a7R III.",
     size="1024x1024",
     quality="hd",
     response_format="b64_json",
