@@ -16,6 +16,8 @@ INSTA_USER=<Your Instagram Username>
 INSTA_PASSWORD=<Your Instagram Password>
 ```
 
+Check out the [News By Art Instagram account](https://www.instagram.com/newsbyart)!
+
 # Kids Art - AI Powered Instagram Account
 This repo also includes another side project (KidsArt.py) which does the following:
   1. Comes up with a Dalle-prompt with the mind of a kid via ChatGPT 3.5 turbo
@@ -30,6 +32,8 @@ OPENAI_API_KEY=<Your OpenAI Key>
 KIDS_USER=<Your Instagram Username>
 KIDS_PASSWORD=<Your Instagram Password>
 ```
+
+Check out the [Kids AI Creations Instagram account](https://www.instagram.com/kidsaicreations/)!
 
 # Setup
 All dependent packages can be installed via:
