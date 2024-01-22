@@ -7,7 +7,7 @@ This Python program does the following (NewsArt.py):
   5. Creates a caption for the art piece via ChatGPT 3.5 turbo
   6. Posts the image and caption to Instagram
 
-This is executed 3 times per day (6am, 12pm, and 6pm PST) via an Azure Function, but can also be run manually via NewsArt.py.
+This is executed 1 time per day (12pm PST) via an Azure Function, but can also be run manually via NewsArt.py.
 
 Requires the following environment variables set or a .env file to be created at the root directory with the following:
 ```
