@@ -5,12 +5,12 @@
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 0 2,14,20 * * *"
+      "schedule": "0 0 20 * * *"
     }
   ],
   "retry": {
     "strategy": "fixedDelay",
-    "maxRetryCount": 3,
+    "maxRetryCount": 2,
     "delayInterval": "00:00:10"
   }
 }
